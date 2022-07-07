@@ -1,0 +1,13 @@
+---
+- name: ensure apache is installed and started
+  hosts: web
+  become: yes
+  vars:
+    http: 80
+    http_docroot: /var/www/mysite.com
+    
+  tasks: 
+  - name: verify correct config files is present
+    template:
+      src: templates/httpd.conf.j2
+      desc: /etc/httpd/conf/httpd.conf
