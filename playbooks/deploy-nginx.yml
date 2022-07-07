@@ -1,0 +1,22 @@
+---
+- name: install nginx plus
+  hosts: all
+  tasks:
+    - name: install nginx
+      include_role:
+        name nginxinc.nginx
+      vars:
+        nginx_type: plus
+        
+    - name: install nginx app protect
+      include_role:
+        name: nginxinc.nginx_app_protect
+      vars:
+        nginx_app_protect_setup_license: false
+        nginx_app_protect_remove_license: false
+        nginx_app_protect_install_signatuyres:: false
+        
+        
+#green: a task executed as expected, no change was made;
+#yellow: a task executed as expeted, making a change
+#red: a task failed to execute successfully

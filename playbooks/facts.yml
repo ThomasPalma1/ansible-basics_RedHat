@@ -1,0 +1,8 @@
+---
+- name: output facts within a playbook
+  hosts: all
+  gather_facts: true
+  tasks:
+  - name: prints ansible facts
+    debug:
+      msg: the default ipv4 address of {{ ansible_fqdn }} is {{ ansible_default_ipv4.address }}
